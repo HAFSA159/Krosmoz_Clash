@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- DataSource configuration for H2 database -->
+    <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
+        <property name="URL" value="jdbc:h2:~/test" />
+        <property name="user" value="sa" />
+        <property name="password" value="password" />
+    </bean>
+
+    <!-- EntityManagerFactory setup -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="persistenceUnitName" value="default" />
+    </bean>
+
+    <!-- Transaction Manager setup -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <!-- DAO beans -->
+    <bean id="tournoiDaoImpl" class="org.krosmozClash.dao.impl.TournoiDaoImpl" />
+    <bean id="tournoiDaoExtension" class="org.krosmozClash.dao.impl.TournoiDaoExtension" />
+
+    <!-- Service beans -->
+    <bean id="tournoiMetier" class="org.krosmozClash.service.impl.TournoiServiceImpl">
+        <property name="tournoiDao" ref="tournoiDaoExtension" />
+    </bean>
+
+</beans>
