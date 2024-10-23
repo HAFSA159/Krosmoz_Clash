@@ -1,5 +1,7 @@
 package org.krosmozClash.service.interfaces;
 
+import org.krosmozClash.model.Jeu;
+
 import java.util.List;
 import java.util.Optional;
 

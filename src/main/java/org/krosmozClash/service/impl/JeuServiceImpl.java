@@ -1,6 +1,7 @@
 package org.krosmozClash.service.impl;
 
 import org.krosmozClash.dao.interfaces.JeuDao;
+import org.krosmozClash.model.Jeu;
 import org.krosmozClash.service.interfaces.JeuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
