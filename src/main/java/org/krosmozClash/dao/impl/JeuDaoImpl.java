@@ -43,6 +43,8 @@ public class JeuDaoImpl implements JeuDao {
         }
     }
 
+
+
     @Override
     public Optional<Jeu> trouverParId(Long id) {
         Jeu jeu = entityManager.find(Jeu.class, id);
