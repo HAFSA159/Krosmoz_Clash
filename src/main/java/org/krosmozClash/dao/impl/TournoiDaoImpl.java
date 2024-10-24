@@ -1,11 +1,10 @@
 package org.krosmozClash.dao.impl;
 
 import org.krosmozClash.dao.interfaces.TournoiDao;
+import org.krosmozClash.model.Equipe;
 import org.krosmozClash.model.Jeu;
 import org.krosmozClash.model.Tournoi;
 import org.slf4j.Logger;
-import org.krosmozClash.model.Equipe;
-
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;

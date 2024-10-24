@@ -24,7 +24,7 @@ public class Joueur {
 
     @ManyToOne
     @JoinColumn(name = "equipe_id")
-    private org.krosmozClash.model.Equipe equipe;
+    private Equipe equipe;
 
     // Constructors
     public Joueur() {
@@ -60,7 +60,7 @@ public class Joueur {
         this.age = age;
     }
 
-    public org.krosmozClash.model.Equipe getEquipe() {
+    public Equipe getEquipe() {
         return equipe;
     }
 

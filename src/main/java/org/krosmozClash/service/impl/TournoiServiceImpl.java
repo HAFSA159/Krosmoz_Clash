@@ -5,7 +5,6 @@ import org.krosmozClash.dao.interfaces.TournoiDao;
 import org.krosmozClash.model.Equipe;
 import org.krosmozClash.model.Tournoi;
 import org.krosmozClash.service.interfaces.TournoiService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

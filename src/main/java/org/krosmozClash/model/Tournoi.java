@@ -37,7 +37,7 @@ public class Tournoi {
 
     @ManyToMany
     @JoinTable(name = "tournoi_equipe", joinColumns = @JoinColumn(name = "tournoi_id"), inverseJoinColumns = @JoinColumn(name = "equipe_id"))
-    private List<org.krosmozClash.model.Equipe> equipes = new ArrayList<>();
+    private List<Equipe> equipes = new ArrayList<>();
 
     @Min(value = 0)
     private int dureeEstimee;
@@ -117,7 +117,7 @@ public class Tournoi {
         this.nombreSpectateurs = nombreSpectateurs;
     }
 
-    public List<org.krosmozClash.model.Equipe> getEquipes() {
+    public List<Equipe> getEquipes() {
         return equipes;
     }
 

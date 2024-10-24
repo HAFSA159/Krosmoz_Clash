@@ -1,5 +1,7 @@
 package org.krosmozClash.dao.interfaces;
 
+import org.krosmozClash.model.Joueur;
+
 import java.util.List;
 import java.util.Optional;
 

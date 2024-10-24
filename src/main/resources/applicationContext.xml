@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="org.krosmozClash"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- DataSource Configuration -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <property name="url" value="jdbc:h2:mem:krosmozClashdb;DB_CLOSE_DELAY=-1"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <!-- EntityManagerFactory Configuration -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="org.krosmozClash.model"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Transaction Manager -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!-- DAOs -->
+    <bean id="joueurDao" class="org.krosmozClash.dao.impl.JoueurDaoImpl"/>
+    <bean id="equipeDao" class="org.krosmozClash.dao.impl.EquipeDaoImpl"/>
+    <bean id="tournoiDao" class="org.krosmozClash.dao.impl.TournoiDaoImpl"/>
+    <bean id="jeuDao" class="org.krosmozClash.dao.impl.JeuDaoImpl"/>
+
+    <!-- Services -->
+    <bean id="joueurService" class="org.krosmozClash.service.impl.JoueurServiceImpl">
+        <constructor-arg ref="joueurDao"/>
+    </bean>
+    <bean id="equipeService" class="org.krosmozClash.service.impl.EquipeServiceImpl">
+        <constructor-arg ref="equipeDao"/>
+        <constructor-arg ref="joueurDao"/>
+    </bean>
+    <bean id="tournoiService" class="org.krosmozClash.service.impl.TournoiServiceImpl">
+        <constructor-arg ref="tournoiDao"/>
+        <constructor-arg ref="equipeDao"/>
+    </bean>
+    <bean id="jeuService" class="org.krosmozClash.service.impl.JeuServiceImpl">
+        <constructor-arg ref="jeuDao"/>
+    </bean>
+
+    <!-- Other beans remain the same -->
+
+    <bean id="mainMenu" class="org.krosmozClash.presentation.menu.MainMenu">
+        <property name="joueurController" ref="joueurController"/>
+        <property name="equipeController" ref="equipeController"/>
+        <property name="tournoiController" ref="tournoiController"/>
+        <property name="jeuController" ref="jeuController"/>
+        <property name="consoleLogger" ref="consoleLogger"/>
+    </bean>
+
+    <bean id="joueurController" class="org.krosmozClash.controller.JoueurController">
+        <constructor-arg ref="joueurService"/>
+    </bean>
+
+    <bean id="equipeController" class="org.krosmozClash.controller.EquipeController">
+        <constructor-arg ref="equipeService"/>
+    </bean>
+
+    <bean id="tournoiController" class="org.krosmozClash.controller.TournoiController">
+        <constructor-arg ref="tournoiService"/>
+    </bean>
+
+    <bean id="jeuController" class="org.krosmozClash.controller.JeuController">
+        <constructor-arg ref="jeuService"/>
+    </bean>
+
+    <bean id="consoleLogger" class="org.krosmozClash.util.ConsoleLogger"/>
+
+    <!-- H2 Web Server -->
+    <bean id="h2WebServer" class="org.h2.tools.Server" factory-method="createWebServer" init-method="start" destroy-method="stop">
+        <constructor-arg value="-web,-webAllowOthers,-webPort,8082" />
+    </bean>
+
+</beans>

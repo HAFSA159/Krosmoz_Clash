@@ -3,6 +3,7 @@ package org.krosmozClash.service.impl;
 import org.krosmozClash.dao.interfaces.EquipeDao;
 import org.krosmozClash.dao.interfaces.JoueurDao;
 import org.krosmozClash.model.Equipe;
+import org.krosmozClash.model.Joueur;
 import org.krosmozClash.service.interfaces.EquipeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

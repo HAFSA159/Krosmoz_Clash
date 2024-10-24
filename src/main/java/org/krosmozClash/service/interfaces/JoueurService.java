@@ -1,5 +1,7 @@
 package org.krosmozClash.service.interfaces;
 
+import org.krosmozClash.model.Joueur;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,4 +17,8 @@ public interface JoueurService {
     List<Joueur> obtenirTousJoueurs();
 
     List<Joueur> obtenirJoueursParEquipe(Long equipeId);
+
+    boolean existeParPseudo(String pseudo);
+
+    Optional<Joueur> trouverParPseudo(String pseudo);
 }

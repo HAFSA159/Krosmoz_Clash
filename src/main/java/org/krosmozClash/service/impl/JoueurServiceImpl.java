@@ -1,13 +1,16 @@
 package org.krosmozClash.service.impl;
 
 import org.krosmozClash.dao.interfaces.JoueurDao;
+import org.krosmozClash.model.Joueur;
 import org.krosmozClash.service.interfaces.JoueurService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class JoueurServiceImpl implements JoueurService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JoueurServiceImpl.class);
@@ -52,5 +55,17 @@ public class JoueurServiceImpl implements JoueurService {
     public List<Joueur> obtenirJoueursParEquipe(Long equipeId) {
         LOGGER.info("Récupération des joueurs pour l'équipe avec l'ID: {}", equipeId);
         return joueurDao.trouverParEquipe(equipeId);
+    }
+
+    @Override
+    public boolean existeParPseudo(String pseudo) {
+        LOGGER.info("Vérification de l'existence d'un joueur avec le pseudo: {}", pseudo);
+        return joueurDao.existeParPseudo(pseudo);
+    }
+
+    @Override
+    public Optional<Joueur> trouverParPseudo(String pseudo) {
+        LOGGER.info("Recherche d'un joueur avec le pseudo: {}", pseudo);
+        return joueurDao.trouverParPseudo(pseudo);
     }
 }
