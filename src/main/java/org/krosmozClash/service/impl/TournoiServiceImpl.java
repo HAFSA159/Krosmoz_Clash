@@ -4,13 +4,16 @@ import org.krosmozClash.dao.interfaces.EquipeDao;
 import org.krosmozClash.dao.interfaces.TournoiDao;
 import org.krosmozClash.model.Equipe;
 import org.krosmozClash.model.Tournoi;
+import org.krosmozClash.model.enums.TournoiStatus;
 import org.krosmozClash.service.interfaces.TournoiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class TournoiServiceImpl implements TournoiService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TournoiServiceImpl.class);
@@ -42,9 +45,10 @@ public class TournoiServiceImpl implements TournoiService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Tournoi> obtenirTournoi(Long id) {
         LOGGER.info("Recherche du tournoi avec l'ID: {}", id);
-        return tournoiDao.trouverParId(id);
+        return tournoiDao.trouverParIdAvecEquipes(id);
     }
 
     @Override
@@ -76,8 +80,15 @@ public class TournoiServiceImpl implements TournoiService {
     }
 
     @Override
-    public int obtenirdureeEstimeeTournoi(Long tournoiId) {
+    public int calculerdureeEstimeeTournoi(Long tournoiId) {
         LOGGER.info("Calcul de la durée estimée pour le tournoi avec l'ID: {}", tournoiId);
         return tournoiDao.calculerdureeEstimeeTournoi(tournoiId);
+    }
+
+    @Override
+    @Transactional
+    public void modifierStatutTournoi(Long tournoiId, TournoiStatus nouveauStatut) {
+        LOGGER.info("Modification du statut du tournoi {} à {}", tournoiId, nouveauStatut);
+        tournoiDao.modifierStatut(tournoiId, nouveauStatut);
     }
 }

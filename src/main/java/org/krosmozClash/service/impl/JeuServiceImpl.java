@@ -5,10 +5,12 @@ import org.krosmozClash.model.Jeu;
 import org.krosmozClash.service.interfaces.JeuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class JeuServiceImpl implements JeuService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JeuServiceImpl.class);

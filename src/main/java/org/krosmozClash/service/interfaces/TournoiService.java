@@ -1,6 +1,7 @@
 package org.krosmozClash.service.interfaces;
 
 import org.krosmozClash.model.Tournoi;
+import org.krosmozClash.model.enums.TournoiStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,5 +21,7 @@ public interface TournoiService {
 
     void retirerEquipe(Long tournoiId, Long equipeId);
 
-    int obtenirdureeEstimeeTournoi(Long tournoiId);
+    int calculerdureeEstimeeTournoi(Long tournoiId);
+
+    void modifierStatutTournoi(Long tournoiId, TournoiStatus nouveauStatut);
 }

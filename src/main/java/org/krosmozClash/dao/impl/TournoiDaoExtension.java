@@ -4,6 +4,7 @@ import org.krosmozClash.dao.interfaces.TournoiDao;
 import org.krosmozClash.model.Equipe;
 import org.krosmozClash.model.Jeu;
 import org.krosmozClash.model.Tournoi;
+import org.krosmozClash.model.enums.TournoiStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,6 +62,11 @@ public class TournoiDaoExtension implements TournoiDao {
     }
 
     @Override
+    public Optional<Tournoi> trouverParIdAvecEquipes(Long id) {
+        return tournoiDaoImpl.trouverParIdAvecEquipes(id);
+    }
+
+    @Override
     public int calculerdureeEstimeeTournoi(Long tournoiId) {
         Tournoi tournoi = entityManager.find(Tournoi.class, tournoiId);
         if (tournoi != null) {
@@ -73,13 +79,15 @@ public class TournoiDaoExtension implements TournoiDao {
 
             int dureeEstimee = (nombreEquipes * dureeMoyenneMatch * difficulteJeu) + tempsPauseEntreMatchs
                     + tempsCeremonie;
-            LOGGER.info("Durée estimée calculée (avancée) pour le tournoi avec l'ID {}: {} minutes", tournoiId,
-                    dureeEstimee);
+            tournoi.setDureeEstimee(dureeEstimee);
+            entityManager.merge(tournoi);
             return dureeEstimee;
-        } else {
-            LOGGER.warn("Tentative de calcul de la durée estimée (avancée) pour un tournoi inexistant avec l'ID: {}",
-                    tournoiId);
-            return 0;
         }
+        return 0;
+    }
+
+    @Override
+    public void modifierStatut(Long tournoiId, TournoiStatus nouveauStatut) {
+        tournoiDaoImpl.modifierStatut(tournoiId, nouveauStatut);
     }
 }

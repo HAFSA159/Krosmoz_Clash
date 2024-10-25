@@ -4,6 +4,7 @@ import org.krosmozClash.dao.interfaces.TournoiDao;
 import org.krosmozClash.model.Equipe;
 import org.krosmozClash.model.Jeu;
 import org.krosmozClash.model.Tournoi;
+import org.krosmozClash.model.enums.TournoiStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,11 +92,31 @@ public class TournoiDaoImpl implements TournoiDao {
             int tempsPauseEntreMatchs = tournoi.getTempsPauseEntreMatchs();
 
             int dureeEstimee = (nombreEquipes * dureeMoyenneMatch) + tempsPauseEntreMatchs;
-            LOGGER.info("Durée estimée calculée pour le tournoi avec l'ID {}: {} minutes", tournoiId, dureeEstimee);
+            tournoi.setDureeEstimee(dureeEstimee);
+            entityManager.merge(tournoi);
             return dureeEstimee;
+        }
+        return 0;
+    }
+
+    @Override
+    public Optional<Tournoi> trouverParIdAvecEquipes(Long id) {
+        TypedQuery<Tournoi> query = entityManager.createQuery(
+                "SELECT DISTINCT t FROM Tournoi t LEFT JOIN FETCH t.equipes WHERE t.id = :id", Tournoi.class);
+        query.setParameter("id", id);
+        List<Tournoi> results = query.getResultList();
+        return results.isEmpty() ? Optional.empty() : Optional.of(results.get(0));
+    }
+
+    @Override
+    public void modifierStatut(Long tournoiId, TournoiStatus nouveauStatut) {
+        Tournoi tournoi = entityManager.find(Tournoi.class, tournoiId);
+        if (tournoi != null) {
+            tournoi.setStatut(nouveauStatut);
+            entityManager.merge(tournoi);
+            LOGGER.info("Statut du tournoi avec l'ID {} modifié à {}", tournoiId, nouveauStatut);
         } else {
-            LOGGER.warn("Tentative de calcul de la durée estimée pour un tournoi inexistant avec l'ID: {}", tournoiId);
-            return 0;
+            LOGGER.warn("Tentative de modification du statut d'un tournoi inexistant avec l'ID: {}", tournoiId);
         }
     }
 }
