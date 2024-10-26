@@ -600,3 +600,168 @@ Exception opening port "8082" (port may be in use), cause: "java.net.BindExcepti
 2024-10-26 21:45:53 INFO  org.krosmozClash.util.ConsoleLogger - Enter the tournament title:
 2024-10-26 21:46:02 INFO  org.krosmozClash.util.ConsoleLogger - Enter the game ID for this tournament:
 2024-10-26 21:46:06 INFO  org.krosmozClash.util.ConsoleLogger - Enter the start date (format: dd/MM/yyyy):
+2024-10-26 21:46:37 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-26 21:46:37 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-10-26 21:46:37 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-26 21:46:37 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-10-26 21:46:38 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-10-26 21:46:38 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-26 21:46:38 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-26 21:46:39 INFO  org.krosmozClash.MainApp - H2 Console URL: http://192.168.1.14:8082
+2024-10-26 21:46:39 INFO  org.krosmozClash.util.ConsoleLogger - Main Menu:
+2024-10-26 21:46:39 INFO  org.krosmozClash.util.ConsoleLogger - 1. Player Management
+2024-10-26 21:46:39 INFO  org.krosmozClash.util.ConsoleLogger - 2. Team Management
+2024-10-26 21:46:39 INFO  org.krosmozClash.util.ConsoleLogger - 3. Tournament Management
+2024-10-26 21:46:39 INFO  org.krosmozClash.util.ConsoleLogger - 4. Game Management
+2024-10-26 21:46:39 INFO  org.krosmozClash.util.ConsoleLogger - 0. Quit
+2024-10-26 21:46:39 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - Player Menu:
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - 1. Register a player
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - 2. Edit a player
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - 3. Delete a player
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - 4. View a player
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - 5. View all players
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - 6. View players in a team
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - 0. Return to main menu
+2024-10-26 21:48:47 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:48:48 INFO  org.krosmozClash.util.ConsoleLogger - Enter the player's username:
+2024-10-26 21:48:53 INFO  org.krosmozClash.util.ConsoleLogger - Enter the player's age:
+2024-10-26 21:52:26 INFO  o.k.controller.JoueurController - Tentative d'inscription d'un nouveau joueur: HAFSA
+2024-10-26 21:52:26 INFO  o.k.service.impl.JoueurServiceImpl - Inscription d'un nouveau joueur
+2024-10-26 21:52:26 INFO  o.k.dao.impl.JoueurDaoImpl - Joueur inscrit avec l'ID: 1
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - Player successfully registered. ID: 1
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - Player Menu:
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - 1. Register a player
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - 2. Edit a player
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - 3. Delete a player
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - 4. View a player
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - 5. View all players
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - 6. View players in a team
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - 0. Return to main menu
+2024-10-26 21:52:26 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:52:34 INFO  org.krosmozClash.util.ConsoleLogger - Main Menu:
+2024-10-26 21:52:34 INFO  org.krosmozClash.util.ConsoleLogger - 1. Player Management
+2024-10-26 21:52:34 INFO  org.krosmozClash.util.ConsoleLogger - 2. Team Management
+2024-10-26 21:52:34 INFO  org.krosmozClash.util.ConsoleLogger - 3. Tournament Management
+2024-10-26 21:52:34 INFO  org.krosmozClash.util.ConsoleLogger - 4. Game Management
+2024-10-26 21:52:34 INFO  org.krosmozClash.util.ConsoleLogger - 0. Quit
+2024-10-26 21:52:34 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - Team Menu:
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 1. Create a team
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 2. Edit a team
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 3. Delete a team
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 4. View a team
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 5. View all teams
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 6. Add a player to a team
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 7. Remove a player from a team
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - 0. Return to main menu
+2024-10-26 21:52:37 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:52:47 INFO  org.krosmozClash.util.ConsoleLogger - Creating a new team
+2024-10-26 21:52:47 INFO  org.krosmozClash.util.ConsoleLogger - Enter the team name:
+2024-10-26 21:52:53 INFO  o.k.controller.EquipeController - Tentative de création d'une nouvelle équipe: MILA
+2024-10-26 21:52:53 INFO  o.k.service.impl.EquipeServiceImpl - Création d'une nouvelle équipe
+2024-10-26 21:52:53 INFO  o.k.dao.impl.EquipeDaoImpl - Equipe créée avec l'ID: 1
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - Team created successfully. ID:  1
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - Team Menu:
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 1. Create a team
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 2. Edit a team
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 3. Delete a team
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 4. View a team
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 5. View all teams
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 6. Add a player to a team
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 7. Remove a player from a team
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - 0. Return to main menu
+2024-10-26 21:52:53 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:53:06 INFO  org.krosmozClash.util.ConsoleLogger - Adding a player to a team
+2024-10-26 21:53:06 INFO  org.krosmozClash.util.ConsoleLogger - Enter the team ID:
+2024-10-26 21:53:08 INFO  org.krosmozClash.util.ConsoleLogger - Enter the player ID to add:
+2024-10-26 21:53:10 INFO  o.k.controller.EquipeController - Tentative d'ajout du joueur 1 à l'équipe 1
+2024-10-26 21:53:10 INFO  o.k.service.impl.EquipeServiceImpl - Ajout du joueur 1 à l'équipe 1
+2024-10-26 21:53:10 INFO  o.k.dao.impl.EquipeDaoImpl - Equipe modifiée avec l'ID: 1
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - Player added to the team successfully (if both existed).
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - Team Menu:
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 1. Create a team
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 2. Edit a team
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 3. Delete a team
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 4. View a team
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 5. View all teams
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 6. Add a player to a team
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 7. Remove a player from a team
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - 0. Return to main menu
+2024-10-26 21:53:10 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:53:15 INFO  org.krosmozClash.util.ConsoleLogger - Main Menu:
+2024-10-26 21:53:15 INFO  org.krosmozClash.util.ConsoleLogger - 1. Player Management
+2024-10-26 21:53:15 INFO  org.krosmozClash.util.ConsoleLogger - 2. Team Management
+2024-10-26 21:53:15 INFO  org.krosmozClash.util.ConsoleLogger - 3. Tournament Management
+2024-10-26 21:53:15 INFO  org.krosmozClash.util.ConsoleLogger - 4. Game Management
+2024-10-26 21:53:15 INFO  org.krosmozClash.util.ConsoleLogger - 0. Quit
+2024-10-26 21:53:15 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - Game Menu:
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - 1. Create a game
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - 2. Edit a game
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - 3. Delete a game
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - 4. View a game
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - 5. View all games
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - 0. Return to main menu
+2024-10-26 21:53:21 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:53:23 INFO  org.krosmozClash.util.ConsoleLogger - Creating a new game
+2024-10-26 21:53:23 INFO  org.krosmozClash.util.ConsoleLogger - Enter the game name:
+2024-10-26 21:53:28 INFO  org.krosmozClash.util.ConsoleLogger - Enter the game difficulty (1-10):
+2024-10-26 21:53:31 INFO  org.krosmozClash.util.ConsoleLogger - Enter the average duration of a match (in minutes):
+2024-10-26 21:53:37 INFO  o.k.controller.JeuController - Tentative de création d'un nouveau jeu: DOFUS
+2024-10-26 21:53:37 INFO  o.k.service.impl.JeuServiceImpl - Création d'un nouveau jeu
+2024-10-26 21:53:37 INFO  o.krosmozClash.dao.impl.JeuDaoImpl - Jeu créé avec l'ID: 1
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - Game created successfully. ID: 1
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - Game Menu:
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - 1. Create a game
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - 2. Edit a game
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - 3. Delete a game
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - 4. View a game
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - 5. View all games
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - 0. Return to main menu
+2024-10-26 21:53:37 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:53:44 INFO  org.krosmozClash.util.ConsoleLogger - Main Menu:
+2024-10-26 21:53:44 INFO  org.krosmozClash.util.ConsoleLogger - 1. Player Management
+2024-10-26 21:53:44 INFO  org.krosmozClash.util.ConsoleLogger - 2. Team Management
+2024-10-26 21:53:44 INFO  org.krosmozClash.util.ConsoleLogger - 3. Tournament Management
+2024-10-26 21:53:44 INFO  org.krosmozClash.util.ConsoleLogger - 4. Game Management
+2024-10-26 21:53:44 INFO  org.krosmozClash.util.ConsoleLogger - 0. Quit
+2024-10-26 21:53:44 INFO  org.krosmozClash.util.ConsoleLogger - Choose an option:
+2024-10-26 21:53:50 INFO  org.krosmozClash.util.ConsoleLogger - Creating a new tournament
+2024-10-26 21:53:50 INFO  org.krosmozClash.util.ConsoleLogger - Enter the tournament title:
+2024-10-26 21:53:56 INFO  org.krosmozClash.util.ConsoleLogger - Enter the game ID for this tournament:
+2024-10-26 21:54:02 INFO  org.krosmozClash.util.ConsoleLogger - Enter the start date (format: dd/MM/yyyy):
+2024-10-26 21:54:13 INFO  org.krosmozClash.util.ConsoleLogger - Enter the end date (format: dd/MM/yyyy):
+2024-10-26 21:54:21 INFO  org.krosmozClash.util.ConsoleLogger - Enter the expected number of spectators:
+2024-10-26 21:54:27 INFO  org.krosmozClash.util.ConsoleLogger - Enter the average match duration (in minutes):
+2024-10-26 21:54:30 INFO  org.krosmozClash.util.ConsoleLogger - Enter the ceremony time (in minutes):
+2024-10-26 21:54:42 INFO  org.krosmozClash.util.ConsoleLogger - Enter the break time between matches (in minutes):
+2024-10-26 21:54:46 INFO  o.k.controller.TournoiController - Tentative de création d'un nouveau tournoi: DOFUS CLASH
+2024-10-26 21:54:46 INFO  o.k.service.impl.JeuServiceImpl - Recherche du jeu avec l'ID: 1
+2024-10-26 21:54:46 INFO  o.k.service.impl.TournoiServiceImpl - Création d'un nouveau tournoi
+2024-10-26 21:54:46 INFO  o.k.dao.impl.TournoiDaoImpl - Tournoi créé avec l'ID: 1
+2024-10-26 21:54:46 INFO  o.k.service.impl.TournoiServiceImpl - Calcul de la durée estimée pour le tournoi avec l'ID: 1
+2024-10-26 21:54:46 INFO  o.k.service.impl.TournoiServiceImpl - Modification du tournoi avec l'ID: 1
+2024-10-26 21:54:46 INFO  o.k.dao.impl.TournoiDaoImpl - Tournoi modifié avec l'ID: 1
+2024-10-26 21:54:46 INFO  org.krosmozClash.util.ConsoleLogger - Tournament created successfully. ID: 1
+2024-10-26 21:54:54 INFO  org.krosmozClash.util.ConsoleLogger - List of all tournaments:
+2024-10-26 21:54:54 INFO  o.k.controller.TournoiController - Tentative d'obtention de tous les tournois
+2024-10-26 21:54:54 INFO  o.k.service.impl.TournoiServiceImpl - Récupération de tous les tournois
+2024-10-26 21:54:54 INFO  org.krosmozClash.util.ConsoleLogger - ID: 1, Titre: DOFUS CLASH, Jeu: DOFUS, Statut: PLANIFIE
+2024-10-26 21:55:08 INFO  org.krosmozClash.util.ConsoleLogger - Adding a team to a tournament
+2024-10-26 21:55:08 INFO  org.krosmozClash.util.ConsoleLogger - Enter the ID of the tournament:
+2024-10-26 21:55:11 INFO  org.krosmozClash.util.ConsoleLogger - Enter the ID of the team to add:
+2024-10-26 21:55:13 INFO  o.k.controller.TournoiController - Tentative d'ajout de l'équipe 1 au tournoi 1
+2024-10-26 21:55:13 INFO  o.k.service.impl.TournoiServiceImpl - Ajout de l'équipe 1 au tournoi 1
+2024-10-26 21:55:13 INFO  o.k.dao.impl.TournoiDaoImpl - Équipe ajoutée au tournoi avec l'ID: 1
+2024-10-26 21:55:13 INFO  org.krosmozClash.util.ConsoleLogger - Team successfully added to the tournament.
+2024-10-26 21:55:25 INFO  org.krosmozClash.util.ConsoleLogger - Calculating estimated duration of a tournament
+2024-10-26 21:55:25 INFO  org.krosmozClash.util.ConsoleLogger - Enter the ID of the tournament:
+2024-10-26 21:55:29 INFO  o.k.controller.TournoiController - Tentative d'obtention de la durée estimée du tournoi avec l'ID: 1
+2024-10-26 21:55:29 INFO  o.k.service.impl.TournoiServiceImpl - Calcul de la durée estimée pour le tournoi avec l'ID: 1
+2024-10-26 21:55:29 INFO  o.k.controller.TournoiController - Tentative d'obtention du tournoi avec l'ID: 1
+2024-10-26 21:55:29 INFO  o.k.service.impl.TournoiServiceImpl - Recherche du tournoi avec l'ID: 1
+2024-10-26 21:55:29 INFO  org.krosmozClash.util.ConsoleLogger - The estimated duration of the tournament is 700 minutes.
+2024-10-26 21:56:02 INFO  o.k.controller.TournoiController - Tentative de modification du statut du tournoi 1 à ANNULE
+2024-10-26 21:56:02 INFO  o.k.service.impl.TournoiServiceImpl - Modification du statut du tournoi 1 à ANNULE
+2024-10-26 21:56:02 INFO  o.k.dao.impl.TournoiDaoImpl - Statut du tournoi avec l'ID 1 modifié à ANNULE
