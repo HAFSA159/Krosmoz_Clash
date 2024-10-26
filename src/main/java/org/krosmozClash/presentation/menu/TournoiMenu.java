@@ -36,20 +36,20 @@ public class TournoiMenu {
     public void afficherMenu() {
         int choix;
         do {
-            System.out.println("\n--- Menu Tournoi ---");
-            System.out.println("1. Créer un tournoi");
-            System.out.println("2. Modifier un tournoi");
-            System.out.println("3. Supprimer un tournoi");
-            System.out.println("4. Afficher un tournoi");
-            System.out.println("5. Afficher tous les tournois");
-            System.out.println("6. Ajouter une équipe à un tournoi");
-            System.out.println("7. Retirer une équipe d'un tournoi");
-            System.out.println("8. Calculer la durée estimée d'un tournoi");
-            System.out.println("9. Modifier le statut d'un tournoi");
-            System.out.println("0. Retour au menu principal");
-            System.out.print("Votre choix : ");
+            System.out.println("\n--- Tournament Menu ---");
+            System.out.println("1. Create a tournament");
+            System.out.println("2. Edit a tournament");
+            System.out.println("3. Delete a tournament");
+            System.out.println("4. Display a tournament");
+            System.out.println("5. Display all tournaments");
+            System.out.println("6. Add a team to a tournament");
+            System.out.println("7. Remove a team from a tournament");
+            System.out.println("8. Calculate estimated tournament duration");
+            System.out.println("9. Modify tournament status");
+            System.out.println("0. Return to main menu");
+            System.out.print("Your choice: ");
             choix = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choix) {
                 case 1:
@@ -80,150 +80,147 @@ public class TournoiMenu {
                     modifierStatutTournoi();
                     break;
                 case 0:
-                    System.out.println("Retour au menu principal...");
+                    System.out.println("Returning to the main menu...");
                     break;
                 default:
-                    System.out.println("Choix invalide. Veuillez réessayer.");
+                    System.out.println("Invalid choice. Please try again.");
             }
         } while (choix != 0);
     }
 
     private void creerTournoi() {
-        consoleLogger.afficherMessage("Création d'un nouveau tournoi");
-        consoleLogger.afficherMessage("Entrez le titre du tournoi:");
+        consoleLogger.afficherMessage("Creating a new tournament");
+        consoleLogger.afficherMessage("Enter the tournament title:");
         String titre = scanner.nextLine();
 
-        consoleLogger.afficherMessage("Entrez l'ID du jeu pour ce tournoi:");
+        consoleLogger.afficherMessage("Enter the game ID for this tournament:");
         Long jeuId = scanner.nextLong();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine(); // Consume newline
 
-        consoleLogger.afficherMessage("Entrez la date de début (format: dd/MM/yyyy):");
+        consoleLogger.afficherMessage("Enter the start date (format: dd/MM/yyyy):");
         LocalDate dateDebut = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-        consoleLogger.afficherMessage("Entrez la date de fin (format: dd/MM/yyyy):");
+        consoleLogger.afficherMessage("Enter the end date (format: dd/MM/yyyy):");
         LocalDate dateFin = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-        consoleLogger.afficherMessage("Entrez le nombre de spectateurs attendus:");
+        consoleLogger.afficherMessage("Enter the expected number of spectators:");
         int nombreSpectateurs = scanner.nextInt();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine();
 
-        consoleLogger.afficherMessage("Entrez la durée moyenne d'un match (en minutes):");
+        consoleLogger.afficherMessage("Enter the average match duration (in minutes):");
         int dureeMoyenneMatch = scanner.nextInt();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine();
 
-        consoleLogger.afficherMessage("Entrez le temps de cérémonie (en minutes):");
+        consoleLogger.afficherMessage("Enter the ceremony time (in minutes):");
         int tempsCeremonie = scanner.nextInt();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine();
 
-        consoleLogger.afficherMessage("Entrez le temps de pause entre les matchs (en minutes):");
+        consoleLogger.afficherMessage("Enter the break time between matches (in minutes):");
         int tempsPauseEntreMatchs = scanner.nextInt();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine();
 
         Tournoi nouveauTournoi = tournoiController.creerTournoi(titre, jeuId, dateDebut, dateFin, nombreSpectateurs,
                 dureeMoyenneMatch, tempsCeremonie, tempsPauseEntreMatchs);
         if (nouveauTournoi != null) {
-            consoleLogger.afficherMessage("Tournoi créé avec succès. ID: " + nouveauTournoi.getId());
+            consoleLogger.afficherMessage("Tournament created successfully. ID: " + nouveauTournoi.getId());
         } else {
-            consoleLogger.afficherErreur("Erreur lors de la création du tournoi.");
+            consoleLogger.afficherErreur("Error creating tournament.");
         }
     }
-
     private void modifierTournoi() {
-        consoleLogger.afficherMessage("Modification d'un tournoi");
-        consoleLogger.afficherMessage("Entrez l'ID du tournoi à modifier:");
+        consoleLogger.afficherMessage("Editing a tournament");
+        consoleLogger.afficherMessage("Enter the ID of the tournament to edit:");
         Long id = scanner.nextLong();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine(); // Consume newline
 
         Optional<Tournoi> tournoiOptional = tournoiController.obtenirTournoi(id);
         if (tournoiOptional.isPresent()) {
             Tournoi tournoi = tournoiOptional.get();
-            consoleLogger.afficherMessage("Entrez le nouveau titre (ou appuyez sur Entrée pour garder l'ancien):");
+            consoleLogger.afficherMessage("Enter the new title (or press Enter to keep the current one):");
             String nouveauTitre = scanner.nextLine();
             if (nouveauTitre.isEmpty()) {
                 nouveauTitre = tournoi.getTitre();
             }
 
-            consoleLogger.afficherMessage(
-                    "Entrez la nouvelle date de début (format: dd/MM/yyyy) (ou appuyez sur Entrée pour garder l'ancienne):");
+            consoleLogger.afficherMessage("Enter the new start date (format: dd/MM/yyyy) (or press Enter to keep the current one):");
             String dateDebutStr = scanner.nextLine();
             LocalDate nouvelleDateDebut = dateDebutStr.isEmpty() ? tournoi.getDateDebut()
                     : LocalDate.parse(dateDebutStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-            consoleLogger.afficherMessage(
-                    "Entrez la nouvelle date de fin (format: dd/MM/yyyy) (ou appuyez sur Entrée pour garder l'ancienne):");
+            consoleLogger.afficherMessage("Enter the new end date (format: dd/MM/yyyy) (or press Enter to keep the current one):");
             String dateFinStr = scanner.nextLine();
             LocalDate nouvelleDateFin = dateFinStr.isEmpty() ? tournoi.getDateFin()
                     : LocalDate.parse(dateFinStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-            consoleLogger.afficherMessage("Entrez le nouveau nombre de spectateurs (ou -1 pour garder l'ancien):");
+            consoleLogger.afficherMessage("Enter the new number of spectators (or -1 to keep the current one):");
             int nouveauNombreSpectateurs = scanner.nextInt();
             if (nouveauNombreSpectateurs == -1) {
                 nouveauNombreSpectateurs = tournoi.getNombreSpectateurs();
             }
-            scanner.nextLine(); // Consommer la nouvelle ligne
+            scanner.nextLine(); // Consume newline
 
             Tournoi tournoiModifie = tournoiController.modifierTournoi(id, nouveauTitre, nouvelleDateDebut,
                     nouvelleDateFin, nouveauNombreSpectateurs);
             if (tournoiModifie != null) {
-                consoleLogger.afficherMessage("Tournoi modifié avec succès.");
+                consoleLogger.afficherMessage("Tournament updated successfully.");
             } else {
-                consoleLogger.afficherErreur("Erreur lors de la modification du tournoi.");
+                consoleLogger.afficherErreur("Error updating tournament.");
             }
         } else {
-            consoleLogger.afficherErreur("Tournoi non trouvé.");
+            consoleLogger.afficherErreur("Tournament not found.");
         }
     }
 
     private void supprimerTournoi() {
-        consoleLogger.afficherMessage("Suppression d'un tournoi");
-        consoleLogger.afficherMessage("Entrez l'ID du tournoi à supprimer:");
+        consoleLogger.afficherMessage("Deleting a tournament");
+        consoleLogger.afficherMessage("Enter the ID of the tournament to delete:");
         Long id = scanner.nextLong();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine(); // Consume newline
 
         Optional<Tournoi> tournoiOptional = tournoiController.obtenirTournoi(id);
         if (tournoiOptional.isPresent()) {
-            consoleLogger.afficherMessage(
-                    "Êtes-vous sûr de vouloir supprimer le tournoi " + tournoiOptional.get().getTitre() + "? (O/N)");
+            consoleLogger.afficherMessage("Are you sure you want to delete the tournament " + tournoiOptional.get().getTitre() + "? (Y/N)");
             String confirmation = scanner.nextLine();
-            if (confirmation.equalsIgnoreCase("O")) {
+            if (confirmation.equalsIgnoreCase("Y")) {
                 tournoiController.supprimerTournoi(id);
-                consoleLogger.afficherMessage("Tournoi supprimé avec succès.");
+                consoleLogger.afficherMessage("Tournament deleted successfully.");
             } else {
-                consoleLogger.afficherMessage("Suppression annulée.");
+                consoleLogger.afficherMessage("Deletion canceled.");
             }
         } else {
-            consoleLogger.afficherErreur("Tournoi non trouvé.");
+            consoleLogger.afficherErreur("Tournament not found.");
         }
     }
 
+
     private void afficherTournoi() {
-        consoleLogger.afficherMessage("Affichage d'un tournoi");
-        consoleLogger.afficherMessage("Entrez l'ID du tournoi à afficher:");
+        consoleLogger.afficherMessage("Displaying tournament details");
+        consoleLogger.afficherMessage("Enter the ID of the tournament to display:");
         Long id = scanner.nextLong();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine(); // Consume the newline
 
         Optional<Tournoi> tournoiOptional = tournoiController.obtenirTournoi(id);
         if (tournoiOptional.isPresent()) {
             Tournoi tournoi = tournoiOptional.get();
-            consoleLogger.afficherMessage("Détails du tournoi:");
+            consoleLogger.afficherMessage("Tournament details:");
             consoleLogger.afficherMessage("ID: " + tournoi.getId());
-            consoleLogger.afficherMessage("Titre: " + tournoi.getTitre());
-            consoleLogger.afficherMessage("Jeu: " + tournoi.getJeu().getNom());
-            consoleLogger.afficherMessage("Date de début: " + tournoi.getDateDebut());
-            consoleLogger.afficherMessage("Date de fin: " + tournoi.getDateFin());
-            consoleLogger.afficherMessage("Nombre de spectateurs: " + tournoi.getNombreSpectateurs());
-            consoleLogger.afficherMessage("Statut: " + tournoi.getStatut());
-            consoleLogger.afficherMessage("Équipes participantes:");
+            consoleLogger.afficherMessage("Title: " + tournoi.getTitre());
+            consoleLogger.afficherMessage("Game: " + tournoi.getJeu().getNom());
+            consoleLogger.afficherMessage("Start Date: " + tournoi.getDateDebut());
+            consoleLogger.afficherMessage("End Date: " + tournoi.getDateFin());
+            consoleLogger.afficherMessage("Number of Spectators: " + tournoi.getNombreSpectateurs());
+            consoleLogger.afficherMessage("Status: " + tournoi.getStatut());
+            consoleLogger.afficherMessage("Participating Teams:");
             for (Equipe equipe : tournoi.getEquipes()) {
                 consoleLogger.afficherMessage("- " + equipe.getNom());
             }
         } else {
-            consoleLogger.afficherErreur("Tournoi non trouvé.");
+            consoleLogger.afficherErreur("Tournament not found.");
         }
     }
 
     private void afficherTousTournois() {
-        consoleLogger.afficherMessage("Liste de tous les tournois:");
+        consoleLogger.afficherMessage("List of all tournaments:");
         List<Tournoi> tournois = tournoiController.obtenirTousTournois();
         if (!tournois.isEmpty()) {
             for (Tournoi tournoi : tournois) {
@@ -232,47 +229,47 @@ public class TournoiMenu {
                         + jeuNom + ", Statut: " + tournoi.getStatut());
             }
         } else {
-            consoleLogger.afficherMessage("Aucun tournoi trouvé.");
+            consoleLogger.afficherMessage("No tournaments found.");
         }
     }
 
     private void ajouterEquipeATournoi() {
-        consoleLogger.afficherMessage("Ajout d'une équipe à un tournoi");
-        consoleLogger.afficherMessage("Entrez l'ID du tournoi:");
+        consoleLogger.afficherMessage("Adding a team to a tournament");
+        consoleLogger.afficherMessage("Enter the ID of the tournament:");
         Long tournoiId = scanner.nextLong();
-        consoleLogger.afficherMessage("Entrez l'ID de l'équipe à ajouter:");
+        consoleLogger.afficherMessage("Enter the ID of the team to add:");
         Long equipeId = scanner.nextLong();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine();
 
         try {
             tournoiController.ajouterEquipeATournoi(tournoiId, equipeId);
-            consoleLogger.afficherMessage("Équipe ajoutée au tournoi avec succès.");
+            consoleLogger.afficherMessage("Team successfully added to the tournament.");
         } catch (Exception e) {
-            consoleLogger.afficherErreur("Erreur lors de l'ajout de l'équipe au tournoi: " + e.getMessage());
+            consoleLogger.afficherErreur("Error adding the team to the tournament: " + e.getMessage());
         }
     }
 
     private void retirerEquipeDeTournoi() {
-        consoleLogger.afficherMessage("Retrait d'une équipe d'un tournoi");
-        consoleLogger.afficherMessage("Entrez l'ID du tournoi:");
+        consoleLogger.afficherMessage("Removing a team from a tournament");
+        consoleLogger.afficherMessage("Enter the ID of the tournament:");
         Long tournoiId = scanner.nextLong();
-        consoleLogger.afficherMessage("Entrez l'ID de l'équipe à retirer:");
+        consoleLogger.afficherMessage("Enter the ID of the team to remove:");
         Long equipeId = scanner.nextLong();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine();
 
         try {
             tournoiController.retirerEquipeDeTournoi(tournoiId, equipeId);
-            consoleLogger.afficherMessage("Équipe retirée du tournoi avec succès.");
+            consoleLogger.afficherMessage("Team successfully removed from the tournament.");
         } catch (Exception e) {
-            consoleLogger.afficherErreur("Erreur lors du retrait de l'équipe du tournoi: " + e.getMessage());
+            consoleLogger.afficherErreur("Error removing the team from the tournament: " + e.getMessage());
         }
     }
 
     private void calculerDureeEstimeeTournoi() {
-        consoleLogger.afficherMessage("Calcul de la durée estimée d'un tournoi");
-        consoleLogger.afficherMessage("Entrez l'ID du tournoi:");
+        consoleLogger.afficherMessage("Calculating estimated duration of a tournament");
+        consoleLogger.afficherMessage("Enter the ID of the tournament:");
         Long tournoiId = scanner.nextLong();
-        scanner.nextLine(); // Consommer la nouvelle ligne
+        scanner.nextLine();
 
         int dureeEstimee = tournoiController.obtenirDureeEstimeeTournoi(tournoiId);
         if (dureeEstimee > 0) {
@@ -280,27 +277,27 @@ public class TournoiMenu {
             if (tournoiOptional.isPresent()) {
                 Tournoi tournoi = tournoiOptional.get();
                 consoleLogger.afficherMessage(
-                        "La durée estimée du tournoi est de " + tournoi.getDureeEstimee() + " minutes.");
+                        "The estimated duration of the tournament is " + tournoi.getDureeEstimee() + " minutes.");
             } else {
-                consoleLogger.afficherErreur("Tournoi non trouvé après le calcul.");
+                consoleLogger.afficherErreur("Tournament not found after calculation.");
             }
         } else {
-            consoleLogger.afficherErreur("Impossible de calculer la durée estimée du tournoi.");
+            consoleLogger.afficherErreur("Unable to calculate the estimated duration of the tournament.");
         }
     }
 
     private void modifierStatutTournoi() {
-        System.out.println("Entrez l'ID du tournoi :");
+        System.out.println("Enter the tournament ID:");
         Long tournoiId = scanner.nextLong();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
-        System.out.println("Choisissez le nouveau statut :");
-        System.out.println("1. PLANIFIE");
-        System.out.println("2. EN_COURS");
-        System.out.println("3. TERMINE");
-        System.out.println("4. ANNULE");
+        System.out.println("Choose the new status:");
+        System.out.println("1. PLANNED");
+        System.out.println("2. IN_PROGRESS");
+        System.out.println("3. COMPLETED");
+        System.out.println("4. CANCELED");
         int choix = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         TournoiStatus nouveauStatut;
         switch (choix) {
@@ -317,11 +314,11 @@ public class TournoiMenu {
                 nouveauStatut = TournoiStatus.ANNULE;
                 break;
             default:
-                System.out.println("Choix invalide. Opération annulée.");
+                System.out.println("Invalid choice. Operation canceled.");
                 return;
         }
 
         tournoiController.modifierStatutTournoi(tournoiId, nouveauStatut);
-        System.out.println("Statut du tournoi modifié avec succès.");
+        System.out.println("Tournament status successfully updated.");
     }
 }

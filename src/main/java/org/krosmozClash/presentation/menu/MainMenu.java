@@ -20,8 +20,8 @@ public class MainMenu {
     private final Scanner scanner;
 
     public MainMenu(JoueurController joueurController, EquipeController equipeController,
-            TournoiController tournoiController, JeuController jeuController,
-            ConsoleLogger consoleLogger) {
+                    TournoiController tournoiController, JeuController jeuController,
+                    ConsoleLogger consoleLogger) {
         this.joueurController = joueurController;
         this.equipeController = equipeController;
         this.tournoiController = tournoiController;
@@ -33,16 +33,16 @@ public class MainMenu {
     public void afficherMenuPrincipal() {
         boolean continuer = true;
         while (continuer) {
-            consoleLogger.afficherMessage("Menu principal:");
-            consoleLogger.afficherMessage("1. Gestion des joueurs");
-            consoleLogger.afficherMessage("2. Gestion des équipes");
-            consoleLogger.afficherMessage("3. Gestion des tournois");
-            consoleLogger.afficherMessage("4. Gestion des jeux");
-            consoleLogger.afficherMessage("0. Quitter");
-            consoleLogger.afficherMessage("Choisissez une option:");
+            consoleLogger.afficherMessage("Main Menu:");
+            consoleLogger.afficherMessage("1. Player Management");
+            consoleLogger.afficherMessage("2. Team Management");
+            consoleLogger.afficherMessage("3. Tournament Management");
+            consoleLogger.afficherMessage("4. Game Management");
+            consoleLogger.afficherMessage("0. Quit");
+            consoleLogger.afficherMessage("Choose an option:");
 
             int choix = scanner.nextInt();
-            scanner.nextLine(); // Consommer la nouvelle ligne
+            scanner.nextLine();
 
             switch (choix) {
                 case 1:
@@ -62,7 +62,7 @@ public class MainMenu {
                     continuer = false;
                     break;
                 default:
-                    consoleLogger.afficherErreur("Option invalide. Veuillez réessayer.");
+                    consoleLogger.afficherErreur("Invalid option. Please try again.");
             }
         }
         scanner.close();
